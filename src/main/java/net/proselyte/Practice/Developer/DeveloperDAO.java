@@ -1,7 +1,6 @@
 package main.java.net.proselyte.Practice.Developer;
 
 import java.io.*;
-import java.util.ArrayList;
 
 public class DeveloperDAO {
 
