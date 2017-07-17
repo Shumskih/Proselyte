@@ -8,18 +8,19 @@ public class Developer implements Serializable {
     private String name;
     private String surname;
     private String specialization;
-    private int iDontKnowWhat;
+    private int experience;
     private int salary;
 
     Developer() {
+
     }
 
-    Developer(int id, String name, String surname, String specialization, int iDontKnowWhat, int salary) {
+    Developer(int id, String name, String surname, String specialization, int experience, int salary) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.specialization = specialization;
-        this.iDontKnowWhat = iDontKnowWhat;
+        this.experience = experience;
         this.salary = salary;
     }
 
@@ -59,13 +60,13 @@ public class Developer implements Serializable {
         return this.specialization;
     }
 
-    public int setIDontKnowWhat(int iDontKnowWhat) {
-        return this.iDontKnowWhat = iDontKnowWhat;
+    public int setExperience(int experience) {
+        return this.experience = experience;
     }
 
-    public int getIDontKnowWhat() {
-        System.out.print(this.name + "'s iDontKnowWhat: ");
-        return this.iDontKnowWhat;
+    public int getExperience() {
+        System.out.print(this.name + "'s experience: ");
+        return this.experience;
     }
 
     public int setSalary(int salary) {
@@ -78,7 +79,7 @@ public class Developer implements Serializable {
     }
 
     public String toString() {
-        return "\n" + id + ": " + name + ", " + surname + ", " + specialization + ", " + iDontKnowWhat + ", " + "$" + salary;
+        return id + ": " + name + ", " + surname + ", " + specialization + ", " + experience + ", " + "$" + salary;
     }
 }
 

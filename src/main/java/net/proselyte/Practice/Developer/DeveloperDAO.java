@@ -5,26 +5,18 @@ import java.util.ArrayList;
 
 public class DeveloperDAO {
 
-    public void saveFile(ArrayList developers) {
-        try ( ObjectOutputStream saveFile = new ObjectOutputStream(new FileOutputStream("developers.txt")) ){
+    public static final String filePath = "developer.txt";
 
-            saveFile.writeObject(developers);
+    public void save(Developer developer) {
+
+        try ( BufferedWriter writer = new BufferedWriter(new FileWriter(filePath)) )
+        {
+            String src = developer.toString();
+            writer.write(src);
+            writer.close();
 
         } catch (IOException e) {
-            System.out.println("Не могу сохранить файл: " + e);
-        }
-    }
-
-    public void openFile() {
-        try ( ObjectInputStream openFile = new ObjectInputStream(new FileInputStream("developers.txt")) ) {
-
-            ArrayList<Developer> developers2 = (ArrayList<Developer>) openFile.readObject();
-            System.out.println(developers2.toString());
-
-        } catch (ClassNotFoundException e) {
-            System.out.println("Файл не найден: " + e);
-        } catch (IOException e) {
-            System.out.println("При открытии файла произошла ошибка: " + e);
+            System.out.println("Ошибка сохранения файла");
         }
     }
 
