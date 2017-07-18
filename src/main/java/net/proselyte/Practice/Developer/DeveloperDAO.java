@@ -12,6 +12,7 @@ public class DeveloperDAO {
         {
             String src = developer.toString();
             writer.write(src);
+            writer.flush();
             writer.close();
 
         } catch (IOException e) {
