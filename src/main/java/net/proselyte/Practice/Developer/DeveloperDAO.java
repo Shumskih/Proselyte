@@ -2,9 +2,7 @@ package main.java.net.proselyte.Practice.Developer;
 
 import java.io.*;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Scanner;
-import java.util.TreeSet;
 
 
 public class DeveloperDAO {
@@ -25,23 +23,27 @@ public class DeveloperDAO {
         }
     }
 
-    public Developer getById(int id) throws FileNotFoundException {
-        String intIdToString = Integer.toString(id);
+    public Developer getById(int id) {
 
-        File file = new File(filePath);
+        try {
+            String intIdToString = Integer.toString(id);
 
-        Scanner scanner = new Scanner(file);
-        String line = scanner.nextLine();
-        String[] developerData = line.split(", ");
+            File file = new File(filePath);
 
-        scanner.close();
+            Scanner scanner = new Scanner(file);
+            String line = scanner.nextLine();
+            String[] developerData = line.split(", ");
 
-        if (developerData[0].equals(intIdToString))
-            System.out.println(Arrays.toString(developerData));
-        else
-            System.out.println("Developer not found!");
+            scanner.close();
 
+            if (developerData[0].equals(intIdToString))
+                System.out.println(Arrays.toString(developerData));
+            else
+                System.out.println("There is no developer with such id!");
 
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found, sorry..." + e);
+        }
         return null;
     }
 

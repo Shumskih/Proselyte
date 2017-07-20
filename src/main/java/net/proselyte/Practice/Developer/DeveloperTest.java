@@ -9,6 +9,6 @@ public class DeveloperTest {
         Developer ivan = new Developer(1, "Ivan", "Ivanov", "Java Developer", 3, 3000);
 
         file.save(ivan);
-        file.getById(2);
+        file.getById(1);
     }
 }
