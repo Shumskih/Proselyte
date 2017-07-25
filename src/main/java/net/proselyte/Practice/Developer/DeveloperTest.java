@@ -8,7 +8,12 @@ public class DeveloperTest {
 
         Developer ivan = new Developer(1, "Ivan", "Ivanov", "Java Developer", 3, 3000);
 
-        file.save(ivan);
-        file.getById(1);
+//        file.save(ivan);
+//        file.getById(1);
+//        file.remove(1);
+
+
+        ivan.setSurname("Volkov");
+        file.update(ivan);
     }
 }
