@@ -26,10 +26,8 @@ public class DeveloperDAO {
 
     public void update(Developer developer) {
         try {
-            //Recreate a file with empty string line
+            //Recreate a file
             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
-            str = "";
-            writer.write(str);
             writer.flush();
             writer.close();
 
@@ -66,8 +64,6 @@ public class DeveloperDAO {
             if (developerData[0].equals(intIdToString)) {
                 try {
                     BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
-                    str = "";
-                    writer.write(str);
                     writer.flush();
                     writer.close();
                     System.out.println("Developer with id : " + id + " successfully deleted!");
