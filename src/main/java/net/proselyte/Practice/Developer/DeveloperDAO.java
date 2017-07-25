@@ -32,7 +32,6 @@ public class DeveloperDAO {
             writer.write(str);
             writer.flush();
             writer.close();
-            System.out.println("New file created");
 
             // Developer
             str = developer.getId() + "," + developer.getName() + "," + developer.getSurname() + "," +
