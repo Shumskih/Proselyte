@@ -9,12 +9,11 @@ import java.util.NoSuchElementException;
 public class DeveloperDAO {
 
     private static final String filePath = "developer.txt";
-    private String str = null;
 
     public void save(Developer developer) {
         try ( BufferedWriter writer = new BufferedWriter(new FileWriter(filePath)) )
         {
-            str = developer.getId() + "," + developer.getName() + "," + developer.getSurname() + "," +
+            String str = developer.getId() + "," + developer.getName() + "," + developer.getSurname() + "," +
                          developer.getSpecialization() + "," + developer.getExperience() + "," + developer.getSalary();
             writer.write(str);
             writer.flush();
@@ -32,7 +31,7 @@ public class DeveloperDAO {
             writer.close();
 
             // Developer
-            str = developer.getId() + "," + developer.getName() + "," + developer.getSurname() + "," +
+            String str = developer.getId() + "," + developer.getName() + "," + developer.getSurname() + "," +
                     developer.getSpecialization() + "," + developer.getExperience() + "," + developer.getSalary();
 
             RandomAccessFile fileRead = new RandomAccessFile(filePath, "rw");
