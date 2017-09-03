@@ -1,9 +1,7 @@
 package main.java.net.proselyte.Practice.Developer;
 
-import java.io.Serializable;
-import java.util.TreeSet;
 
-public class Developer implements Serializable {
+public class Developer {
 
     private Integer id;
     private String name;

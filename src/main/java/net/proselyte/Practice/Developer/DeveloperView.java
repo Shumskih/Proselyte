@@ -11,12 +11,12 @@ public class DeveloperView {
         DeveloperController developerController = new DeveloperController();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String str;
-        Integer developerId = null;
-        String developerName = null;
-        String developerSurname = null;
-        String developerSpecialization = null;
-        Integer developerExperience = null;
-        Integer developerSalary = null;
+        Integer developerId;
+        String developerName;
+        String developerSurname;
+        String developerSpecialization;
+        Integer developerExperience;
+        Integer developerSalary;
         Developer developer;
 
         try {
@@ -78,6 +78,7 @@ public class DeveloperView {
 
                         developer = new Developer(developerId, developerName, developerSurname, developerSpecialization, developerExperience, developerSalary);
                         developerController.save(developer);
+                        developer = null; // Let the GC doing it's work
                         System.out.println("Developer created!");
                         System.out.println();
                         break;
@@ -85,64 +86,47 @@ public class DeveloperView {
 
                     case "2": // Update developer
                         String input;
+                        developer = new Developer();
                         do {
-                            System.out.println("What do you want to update?");
-                            System.out.println("    1. Id");
-                            System.out.println("    2. Name");
-                            System.out.println("    3. Surname");
-                            System.out.println("    4. Specialization");
-                            System.out.println("    5. Experience");
-                            System.out.println("    6. Salary");
-                            input = br.readLine().trim();
-                            switch(input) {
-                                case "1":
-                                    do {
-                                        System.out.println("Change developer's ID:");
-                                        developerId = Integer.parseInt(br.readLine().trim());
-                                        break;
-                                    } while (true);
-                                    break;
-                                case "2":
-                                    do {
-                                        System.out.println("Enter developer's name: ");
-                                        developerName = br.readLine().trim();
-                                        break;
-                                    } while (true);
-                                    break;
-                                case "3":
-                                    do {
-                                        System.out.println("Enter developer's surname: ");
-                                        developerSurname = br.readLine().trim();
-                                        break;
-                                    } while (true);
-                                    break;
-                                case "4":
-                                    do {
-                                        System.out.println("Enter developer's specialization: ");
-                                        developerSpecialization = br.readLine().trim();
-                                        break;
-                                    } while (true);
-                                    break;
-                                case "5":
-                                    do {
-                                        System.out.println("Enter developer's experience: ");
-                                        developerExperience = Integer.parseInt(br.readLine().trim());
-                                        break;
-                                    } while (true);
-                                    break;
-                                case "6":
-                                    do {
-                                        System.out.println("Enter developer's salary: ");
-                                        developerSalary = Integer.parseInt(br.readLine().trim());
-                                        break;
-                                    } while (true);
-                                    break;
-                            }
-                            System.out.println();
+                            System.out.println("Enter ID of developer you are going to update:");
+                            developerId = Integer.parseInt(br.readLine().trim());
+                            developer.setId(developerId);
                             break;
-                        } while(!input.equals("exit"));
-                        developer = new Developer(developerId, developerName, developerSurname, developerSpecialization, developerExperience, developerSalary);
-                        developerController.save(developer);
+                        } while (true);
+                        do {
+                            System.out.println("Enter developer's name: ");
+                            developerName = br.readLine().trim();
+                            developer.setName(developerName);
+                            break;
+                        } while (true);
+                        do {
+                            System.out.println("Enter developer's surname: ");
+                            developerSurname = br.readLine().trim();
+                            developer.setSurname(developerSurname);
+                            break;
+                        } while (true);
+                        do {
+                            System.out.println("Enter developer's specialization: ");
+                            developerSpecialization = br.readLine().trim();
+                            developer.setSpecialization(developerSpecialization);
+                            break;
+                        } while (true);
+                        do {
+                            System.out.println("Enter developer's experience: ");
+                            developerExperience = Integer.parseInt(br.readLine().trim());
+                            developer.setExperience(developerExperience);
+                            break;
+                        } while (true);
+                        do {
+                            System.out.println("Enter developer's salary: ");
+                            developerSalary = Integer.parseInt(br.readLine().trim());
+                            developer.setSalary(developerSalary);
+                            break;
+                        } while (true);
+                        System.out.println();
+
+                        developerController.update(developer);
+                        developer = null;
                         System.out.println("Developer updated!");
                         System.out.println();
                         break;
