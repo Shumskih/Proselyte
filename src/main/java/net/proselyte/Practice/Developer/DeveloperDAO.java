@@ -4,11 +4,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public class DeveloperDAO {
+class DeveloperDAO {
 
     private static final String filePath = "developer.txt";
 
-    public void save(Developer developer) {
+    void save(Developer developer) {
         File file = new File("developer.txt");
         String id = Integer.toString(developer.getId());
         boolean IDExists = false;
@@ -59,7 +59,7 @@ public class DeveloperDAO {
         // End of writing developer to a file
     }
 
-    public void update(Developer developer) {
+    void update(Developer developer) {
         File file = new File("developer.txt");
         String idToString = Integer.toString(developer.getId());
         ArrayList<String> developersList = new ArrayList<>();
@@ -133,7 +133,7 @@ public class DeveloperDAO {
         }
     }
 
-    public void remove(int id) {
+    void remove(int id) {
         File file = new File("developer.txt");
         String idToString = Integer.toString(id);
         ArrayList<String> developersList = new ArrayList<>();
@@ -181,7 +181,7 @@ public class DeveloperDAO {
             System.out.println("Developer with ID " + id + " is not exists");
     }
 
-    public Developer getById(int id) {
+    Developer getById(int id) {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath)))
         {

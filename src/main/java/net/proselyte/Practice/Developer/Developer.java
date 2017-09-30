@@ -1,7 +1,7 @@
 package main.java.net.proselyte.Practice.Developer;
 
 
-public class Developer {
+class Developer {
 
     private Integer id;
     private String name;
