@@ -75,11 +75,9 @@ public class CustomerDAO {
             try (BufferedReader reader = new BufferedReader(new FileReader(filePathCustomer))) {
                 String line;
                 String[] customerData;
-                String[] projectData;
 
                 while ((line = reader.readLine()) != null) {
                     customerData = line.split(",");
-                    projectData = line.split("[<>]");
 
                     if (customerData[0].equals(customerId)) {
                         IDExists = true;

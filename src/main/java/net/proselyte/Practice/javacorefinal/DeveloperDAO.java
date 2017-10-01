@@ -82,10 +82,6 @@ public class DeveloperDAO {
             try (BufferedReader reader = new BufferedReader(new FileReader(filePathDevelopers))) {
                 String line;
                 String[] developerData;
-                String[] skillData;
-                String[] skillDataParseByComma;
-                String[] projectData;
-                String[] projectDataParseByComma;
 
                 while ((line = reader.readLine()) != null) {
                     developerData = line.split(",");

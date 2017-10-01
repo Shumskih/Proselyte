@@ -76,18 +76,12 @@ public class ProjectDAO {
             try (BufferedReader reader = new BufferedReader(new FileReader(filePathProject))) {
                 String line;
                 String[] projectData;
-                String[] developerData;
 
                 while ((line = reader.readLine()) != null) {
                     projectData = line.split(",");
-                    developerData = line.split("[<>]");
 
                     if (projectData[0].equals(projectID)) {
                         IDExists = true;
-
-//                        projectData[0] = Integer.toString(project.getId());
-//                        projectData[1] = project.getProjectName();
-//                        projectData[2] = project.getProjectVersion();
 
                         String str = project.getId() + "," +
                                     project.getProjectName() + "," +

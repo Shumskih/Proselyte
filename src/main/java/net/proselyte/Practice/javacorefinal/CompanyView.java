@@ -19,7 +19,6 @@ public class CompanyView {
 
     private Integer companyID;
     private String companyName;
-    private String anotherOneProject = "no";
     private Integer projectID;
 
     public void createCompany() {

@@ -5,7 +5,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class CustomerView {
-    private static final String filePathCustomers = "customers.txt";
     private static final String filePathProjects = "projects.txt";
 
     CustomerController customerController = new CustomerController();
@@ -18,7 +17,6 @@ public class CustomerView {
     private String customerName;
     Set<Project> projects = new LinkedHashSet<>();
 
-    private String anotherOnePriject = "no";
     private Integer projectID;
     private String addProject;
 

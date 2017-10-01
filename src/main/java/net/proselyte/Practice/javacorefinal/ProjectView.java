@@ -1,13 +1,12 @@
 package main.java.net.proselyte.Practice.javacorefinal;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 public class ProjectView {
     private static final String filePathDevelopers = "developers.txt";
+
     ProjectController projectController = new ProjectController();
     ProjectDAO projectDAO = new ProjectDAO();
     DeveloperDAO developerDAO = new DeveloperDAO();
@@ -21,7 +20,6 @@ public class ProjectView {
     Set<Project> projects = new LinkedHashSet<>();
     Set<Skill> skills = new LinkedHashSet<>();
     Set<Developer> developers = new LinkedHashSet<>();
-    String anotherOneProject = "yes";
     Integer developerId;
 
     public void createProject() {

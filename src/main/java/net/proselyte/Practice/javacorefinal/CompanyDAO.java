@@ -75,7 +75,6 @@ public class CompanyDAO {
             try (BufferedReader reader = new BufferedReader(new FileReader(filePathCompany))) {
                 String line;
                 String[] companyData;
-                String[] developerData;
 
                 while ((line = reader.readLine()) != null) {
                     companyData = line.split(",");

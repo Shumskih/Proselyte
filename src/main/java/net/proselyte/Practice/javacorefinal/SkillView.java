@@ -14,7 +14,6 @@ public class SkillView {
     private Skill skill;
     private Integer skillId;
     private String skillName;
-    private String anotherOneSkill = "no";
 
     public void createSkill() {
             try {
