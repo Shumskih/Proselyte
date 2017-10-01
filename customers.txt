@@ -2,3 +2,4 @@
 2,Krovat Krovatov,<1,3>
 4,Stul Stulov,<3,2>
 3,Stol Stolov,<2,3,1>
+5,Super Customer,<4>

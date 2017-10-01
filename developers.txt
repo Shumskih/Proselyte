@@ -2,3 +2,4 @@
 3,Krovat,Matrasov,Java Junior,1,1000,<1,2,3,4>,{}
 4,MTS,MTSov,Java Middle,2,2000,<1,2,6>,{2,1}
 2,Divan,Divanov,Java Developer,1,1000,<1,2>,{1}
+5,Super,Developer,Java Master,10,1000000,<1,2,3,4,5,6,7>,{1,2,3,4}
