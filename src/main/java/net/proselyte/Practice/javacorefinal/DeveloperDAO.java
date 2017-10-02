@@ -89,13 +89,6 @@ public class DeveloperDAO {
                     if (developerData[0].equals(idToString)) {
                         IDExists = true;
 
-                        developerData[0] = Integer.toString(developer.getId());
-                        developerData[1] = developer.getName();
-                        developerData[2] = developer.getSurname();
-                        developerData[3] = developer.getSpecialization();
-                        developerData[4] = Integer.toString(developer.getExperience());
-                        developerData[5] = Integer.toString(developer.getSalary());
-
                         String str = developer.getId() + "," +
                                 developer.getName() + "," +
                                 developer.getSurname() + "," +
@@ -284,7 +277,6 @@ public class DeveloperDAO {
 
                 Developer developer = new Developer(developerId, developerName, developerSurname, developerSpecialization, developerExperience, developerSalary, skills, projects);
                 developersSet.add(developer);
-                developer = null;
             }
 
             for (Developer s:developersSet) {

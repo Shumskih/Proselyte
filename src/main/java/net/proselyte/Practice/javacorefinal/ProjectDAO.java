@@ -7,26 +7,25 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class ProjectDAO {
-    private static final String filePathProject = "projects.txt";
+    private static final String filePathProjects = "projects.txt";
 
     public void save(Project project) {
         File projectFile = new File("projects.txt");
         String projectId = Integer.toString(project.getId());
-        String projectName = project.getProjectName();
         boolean projectIdExists = false;
 
         // Checking if file exists and if true searching ID duplicates
         if (projectFile.exists()) {
             // Search of ID duplicates
-            try (BufferedReader reader = new BufferedReader(new FileReader(filePathProject))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(filePathProjects))) {
                 String line;
                 String[] projectData;
 
                 while ((line = reader.readLine()) != null) {
                     projectData = line.split(",");
-                    if (projectData[1].equals(projectName)) {
+                    if (projectData[0].equals(projectId)) {
                         System.out.println("==========================================================================");
-                        System.out.println("There is already a \"" + projectName + "\".Please, enter another name.");
+                        System.out.println("Project with ID " + projectId + " is already exists. Please, enter another ID.");
                         System.out.println("==========================================================================");
                         System.out.println();
                         projectIdExists = true;
@@ -45,7 +44,7 @@ public class ProjectDAO {
 
         // Writing project to a file
         if (!projectIdExists) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePathProject, true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePathProjects, true))) {
                 String str = project.getId() + "," +
                             project.getProjectName() + "," +
                             project.getProjectVersion() + "," +
@@ -58,7 +57,7 @@ public class ProjectDAO {
                 writer.close();
                 System.out.println("Project " + "\"" + project.getProjectName() + "\"" + " created.");
             } catch (IOException e) {
-                System.out.println("I can't to save file " + filePathProject + ", sorry...: " + e);
+                System.out.println("I can't to save file " + filePathProjects + ", sorry...: " + e);
             }
         }
         // End of write project to a file
@@ -73,7 +72,7 @@ public class ProjectDAO {
         // Checking if file exists and if true searching of ID
         if (file.exists()) {
             // Searching of ID
-            try (BufferedReader reader = new BufferedReader(new FileReader(filePathProject))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(filePathProjects))) {
                 String line;
                 String[] projectData;
 
@@ -111,7 +110,7 @@ public class ProjectDAO {
         // If ID exists
         if (IDExists) {
             file.delete();
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePathProject, true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePathProjects, true))) {
 
                 for (String s : projectsList) {
                     writer.write(s);
@@ -124,7 +123,7 @@ public class ProjectDAO {
                 writer.flush();
                 writer.close();
             } catch (IOException e) {
-                System.out.println("It can't to save file " + filePathProject + ": " + e);
+                System.out.println("It can't to save file " + filePathProjects + ": " + e);
             }
         } else {
             System.out.println("Project not exists. Can't update");
@@ -132,7 +131,7 @@ public class ProjectDAO {
     }
 
     public Integer getById(Integer id) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePathProject)))
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePathProjects)))
         {
             String intIdToString = Integer.toString(id);
             String line;
@@ -165,7 +164,7 @@ public class ProjectDAO {
     }
 
     public void getByIdDAO(Integer id) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePathProject)))
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePathProjects)))
         {
             String intIdToString = Integer.toString(id);
             String line;
@@ -204,7 +203,7 @@ public class ProjectDAO {
     }
 
     public void showAllProjects() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePathProject))){
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePathProjects))){
             String line;
             String[] projectString;
             Integer projectID;
