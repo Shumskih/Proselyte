@@ -1,4 +1,7 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.view;
+
+import main.java.net.proselyte.Practice.javacorefinal.controller.SkillController;
+import main.java.net.proselyte.Practice.javacorefinal.model.Skill;
 
 import java.io.BufferedReader;
 import java.io.IOException;

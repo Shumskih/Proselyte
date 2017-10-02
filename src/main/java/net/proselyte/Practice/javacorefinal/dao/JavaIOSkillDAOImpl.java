@@ -1,9 +1,11 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.dao;
+
+import main.java.net.proselyte.Practice.javacorefinal.model.Skill;
 
 import java.io.*;
 import java.util.*;
 
-public class SkillDAO {
+public class JavaIOSkillDAOImpl implements SkillDAO {
     private static final String filePathSkills = "skills.txt";
 
     public void save(Skill skill) {
@@ -64,7 +66,7 @@ public class SkillDAO {
         // End of write skill to a file
     }
 
-    void update(Skill skill) {
+    public void update(Skill skill) {
         File file = new File("skills.txt");
         String skillID = Integer.toString(skill.getId());
         List<String> skillsList = new ArrayList<>();

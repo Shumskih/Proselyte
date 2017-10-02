@@ -1,4 +1,9 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.view;
+
+import main.java.net.proselyte.Practice.javacorefinal.controller.DeveloperController;
+import main.java.net.proselyte.Practice.javacorefinal.model.Developer;
+import main.java.net.proselyte.Practice.javacorefinal.model.Project;
+import main.java.net.proselyte.Practice.javacorefinal.model.Skill;
 
 import java.io.*;
 import java.util.LinkedHashSet;

@@ -1,4 +1,8 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.dao;
+
+import main.java.net.proselyte.Practice.javacorefinal.model.Developer;
+import main.java.net.proselyte.Practice.javacorefinal.model.Project;
+import main.java.net.proselyte.Practice.javacorefinal.model.Skill;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -6,7 +10,7 @@ import java.util.LinkedHashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-public class DeveloperDAO {
+public class JavaIODeveloperDAOImpl implements DeveloperDAO {
     private static final String filePathDevelopers = "developers.txt";
 
     public void save(Developer developer) {
@@ -70,7 +74,7 @@ public class DeveloperDAO {
             // End of writing developer to a file
     }
 
-    void update(Developer developer) {
+    public void update(Developer developer) {
         File file = new File("developers.txt");
         String idToString = Integer.toString(developer.getId());
         ArrayList<String> developersList = new ArrayList<>();
@@ -142,7 +146,7 @@ public class DeveloperDAO {
         }
     }
 
-    Developer getById(int id) {
+    public void getById(Integer id) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePathDevelopers)))
         {
             String intIdToString = Integer.toString(id);
@@ -178,21 +182,21 @@ public class DeveloperDAO {
                     // Show developer's skills
                     System.out.println("----------");
                     System.out.print("Skills: ");
-                    SkillDAO skillDAO = new SkillDAO();
+                    JavaIOSkillDAOImpl javaIOSkillDAOImpl = new JavaIOSkillDAOImpl();
 
                     for (String skillId: skill) {
                         Integer index = Integer.parseInt(skillId);
-                        skillDAO.getById(index);
+                        javaIOSkillDAOImpl.getById(index);
                     }
 
                     // Show developer's projects
                     System.out.println("\n----------");
                     System.out.print("Projects: ");
-                    ProjectDAO projectDAO = new ProjectDAO();
+                    JavaIOProjectDAOImpl javaIOProjectDAOImpl = new JavaIOProjectDAOImpl();
 
                     for (String projectId: project) {
                         Integer index = Integer.parseInt(projectId);
-                        projectDAO.getById(index);
+                        javaIOProjectDAOImpl.getById(index);
                     }
                     break;
                 } else
@@ -207,46 +211,6 @@ public class DeveloperDAO {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
-    }
-
-    Developer getByIdDAO(int id) {
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePathDevelopers)))
-        {
-            String intIdToString = Integer.toString(id);
-            String line;
-            String[] developer = null;
-
-            while ((line = reader.readLine()) != null) {
-                developer = line.split(",");
-
-                if (developer[0].equals(intIdToString)) {
-
-                    // Show developer
-                    System.out.println("================");
-                    System.out.println("Developers which develop that project : ");
-                    System.out.println();
-                    System.out.println("ID: " + developer[0]);
-                    System.out.println("Name: " + developer[1]);
-                    System.out.println("Surname: " + developer[2]);
-                    System.out.println("Specialization: " + developer[3]);
-                    System.out.println("Experience: " + developer[4] + " year");
-                    System.out.println("Salary: $" + developer[5]);
-                    break;
-                } else
-                    developer = null;
-            }
-            if(developer == null)
-                System.out.println("Developer with ID " + id + " not found. Please, try again later. )))");
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found, sorry..." + e);
-        } catch (NoSuchElementException e) {
-            System.out.println("There is no developer with id: " + id + ": " + e);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public void showAllDevelopers() {

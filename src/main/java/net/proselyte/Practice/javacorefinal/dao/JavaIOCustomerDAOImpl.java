@@ -1,4 +1,6 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.dao;
+
+import main.java.net.proselyte.Practice.javacorefinal.model.Customer;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -6,7 +8,7 @@ import java.util.LinkedHashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-public class CustomerDAO {
+public class JavaIOCustomerDAOImpl implements CustomerDAO {
     private static final String filePathCustomer = "customers.txt";
 
     public void save(Customer customer) {
@@ -63,7 +65,7 @@ public class CustomerDAO {
         // End of write customer to a file
     }
 
-    void update(Customer customer) {
+    public void update(Customer customer) {
         File file = new File("customers.txt");
         String customerId = Integer.toString(customer.getCustomerId());
         ArrayList<String> customersList = new ArrayList<>();
@@ -130,7 +132,7 @@ public class CustomerDAO {
         }
     }
 
-    public Integer getById(Integer id) {
+    public void getById(Integer id) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePathCustomer)))
         {
             String intIdToString = Integer.toString(id);
@@ -147,46 +149,6 @@ public class CustomerDAO {
                     System.out.println("Name: \"" + customer[1] + "\"" + " ");
                     System.out.println("------------");
                     System.out.println();
-                    break;
-                } else {
-                    customer = null;
-                }
-            }
-            if(customer == null)
-                System.out.println("Customer with ID " + id + " not found. Please, try again later. )))");
-        } catch(FileNotFoundException e){
-            System.out.println("File customers.txt not found, sorry..." + e);
-        } catch(NoSuchElementException e){
-            System.out.println("There is no customers with id: " + id + ": " + e);
-        } catch(IOException e){
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public void getByIdDAO(Integer id) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePathCustomer)))
-        {
-            String intIdToString = Integer.toString(id);
-            String line;
-            String[] customer = null;
-            String[] parseCustomerByAngleBrackets;
-
-            while ((line = reader.readLine()) != null) {
-                customer = line.split(",");
-                parseCustomerByAngleBrackets = line.split("[<>]");
-                String[] projectsId = parseCustomerByAngleBrackets[1].split(",");
-
-                if (customer[0].equals(intIdToString)) {
-                    System.out.println("Customer's ID: \"" + customer[0] + "\"" + " ");
-                    System.out.println("Customer's name: \"" + customer[1] + "\"" + " ");
-
-                    System.out.println("Customer " + customer[1] + " has projects:");
-                    ProjectDAO projectDAO = new ProjectDAO();
-                    for (String projectId:projectsId) {
-                        Integer index = Integer.parseInt(projectId);
-                        projectDAO.getByIdDAO(index);
-                    }
                     break;
                 } else {
                     customer = null;

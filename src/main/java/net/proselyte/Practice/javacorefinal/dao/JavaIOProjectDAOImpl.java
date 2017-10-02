@@ -1,4 +1,7 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.dao;
+
+import main.java.net.proselyte.Practice.javacorefinal.model.Developer;
+import main.java.net.proselyte.Practice.javacorefinal.model.Project;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -6,7 +9,7 @@ import java.util.LinkedHashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-public class ProjectDAO {
+public class JavaIOProjectDAOImpl implements ProjectDAO {
     private static final String filePathProjects = "projects.txt";
 
     public void save(Project project) {
@@ -63,7 +66,7 @@ public class ProjectDAO {
         // End of write project to a file
     }
 
-    void update(Project project) {
+    public void update(Project project) {
         File file = new File("projects.txt");
         String projectID = Integer.toString(project.getId());
         ArrayList<String> projectsList = new ArrayList<>();
@@ -130,7 +133,7 @@ public class ProjectDAO {
         }
     }
 
-    public Integer getById(Integer id) {
+    public void getById(Integer id) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePathProjects)))
         {
             String intIdToString = Integer.toString(id);
@@ -146,46 +149,6 @@ public class ProjectDAO {
                     System.out.println("Name: \"" + project[1] + "\"" + " ");
                     System.out.println("Version: \"" + project[2] + "\"" + " ");
                     System.out.println("------------");
-                    break;
-                } else {
-                    project = null;
-                }
-            }
-            if(project == null)
-                System.out.println("Project with ID " + id + " not found. Please, try again later. )))");
-        } catch(FileNotFoundException e){
-            System.out.println("File projects.txt not found, sorry..." + e);
-        } catch(NoSuchElementException e){
-            System.out.println("There is no projects with id: " + id + ": " + e);
-        } catch(IOException e){
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public void getByIdDAO(Integer id) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePathProjects)))
-        {
-            String intIdToString = Integer.toString(id);
-            String line;
-            String[] project = null;
-            String[] parseProjectByAngleBrackets;
-
-            while ((line = reader.readLine()) != null) {
-                project = line.split(",");
-                parseProjectByAngleBrackets = line.split("[<>]");
-                String[] developersId = parseProjectByAngleBrackets[1].split(",");
-
-                if (project[0].equals(intIdToString)) {
-                    System.out.println("Project's ID: \"" + project[0] + "\"" + " ");
-                    System.out.println("Project's name: \"" + project[1] + "\"" + " ");
-                    System.out.println("Project's version: \"" + project[2] + "\"" + " ");
-
-                    DeveloperDAO developerDAO = new DeveloperDAO();
-                    for (String developerId:developersId) {
-                        Integer index = Integer.parseInt(developerId);
-                        developerDAO.getByIdDAO(index);
-                    }
                     break;
                 } else {
                     project = null;

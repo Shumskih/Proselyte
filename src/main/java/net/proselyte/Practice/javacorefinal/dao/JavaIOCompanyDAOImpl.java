@@ -1,4 +1,6 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.dao;
+
+import main.java.net.proselyte.Practice.javacorefinal.model.Company;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -6,7 +8,7 @@ import java.util.LinkedHashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-public class CompanyDAO {
+public class JavaIOCompanyDAOImpl implements CompanyDAO {
     private static final String filePathCompany = "companies.txt";
 
     public void save(Company company) {
@@ -63,7 +65,7 @@ public class CompanyDAO {
         // End of writing company to a file
     }
 
-    void update(Company company) {
+    public void update(Company company) {
         File file = new File("companies.txt");
         String companyID = Integer.toString(company.getCompanyId());
         ArrayList<String> companiesList = new ArrayList<>();
@@ -147,47 +149,6 @@ public class CompanyDAO {
                     System.out.println("Name: \"" + company[1] + "\"" + " ");
                     System.out.println("------------");
                     System.out.println();
-                    break;
-                } else {
-                    company = null;
-                }
-            }
-            if(company == null)
-                System.out.println("Company with ID " + companyId + " not found. Please, try again later. )))");
-        } catch(FileNotFoundException e){
-            System.out.println("File companies.txt not found, sorry..." + e);
-        } catch(NoSuchElementException e){
-            System.out.println("There is no company with ID: " + id + ": " + e);
-        } catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void getByIdDAO(Integer id) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePathCompany)))
-        {
-            String line;
-            String[] company = null;
-            String companyId = Integer.toString(id);
-            String[] parseCompanyByAngleBrackets;
-
-            while ((line = reader.readLine()) != null) {
-                company = line.split(",");
-                parseCompanyByAngleBrackets = line.split("[<>]");
-                String[] projectsId = parseCompanyByAngleBrackets[1].split(",");
-
-                if (company[0].equals(companyId)) {
-                    System.out.println("Companies's ID: " + company[0] + " ");
-                    System.out.println("Companies's name: \"" + company[1] + "\"" + " ");
-
-                    System.out.println("----------");
-                    System.out.println("Projects of the company \"" + company[1] + "\":");
-                    System.out.println();
-                    ProjectDAO projectDAO = new ProjectDAO();
-                    for (String projectId:projectsId) {
-                        Integer index = Integer.parseInt(projectId);
-                        projectDAO.getByIdDAO(index);
-                    }
                     break;
                 } else {
                     company = null;

@@ -1,10 +1,10 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.model;
 
 public class Skill {
     private Integer id;
     private String skill;
 
-    Skill() {
+    public Skill() {
     }
 
     public Skill(Integer id, String skill) {

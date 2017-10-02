@@ -1,9 +1,12 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.view;
+
+import main.java.net.proselyte.Practice.javacorefinal.controller.CompanyController;
+import main.java.net.proselyte.Practice.javacorefinal.controller.ProjectController;
+import main.java.net.proselyte.Practice.javacorefinal.model.Company;
+import main.java.net.proselyte.Practice.javacorefinal.model.Project;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class CompanyView {

@@ -1,4 +1,11 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.view;
+
+import main.java.net.proselyte.Practice.javacorefinal.controller.ProjectController;
+import main.java.net.proselyte.Practice.javacorefinal.dao.JavaIODeveloperDAOImpl;
+import main.java.net.proselyte.Practice.javacorefinal.dao.JavaIOProjectDAOImpl;
+import main.java.net.proselyte.Practice.javacorefinal.model.Developer;
+import main.java.net.proselyte.Practice.javacorefinal.model.Project;
+import main.java.net.proselyte.Practice.javacorefinal.model.Skill;
 
 import java.io.*;
 import java.util.LinkedHashSet;
@@ -10,8 +17,8 @@ public class ProjectView {
     private static final String filePathSkills = "skills.txt";
 
     ProjectController projectController = new ProjectController();
-    ProjectDAO projectDAO = new ProjectDAO();
-    DeveloperDAO developerDAO = new DeveloperDAO();
+    JavaIOProjectDAOImpl javaIOProjectDAOImpl = new JavaIOProjectDAOImpl();
+    JavaIODeveloperDAOImpl javaIODeveloperDAOImpl = new JavaIODeveloperDAOImpl();
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -50,7 +57,7 @@ public class ProjectView {
 
                     System.out.println("There is a list of developers: ");
 
-                    developerDAO.showAllDevelopers();
+                    javaIODeveloperDAOImpl.showAllDevelopers();
 
                     System.out.println();
                     System.out.println("Please, enter ID of developer you want to add: ");
@@ -181,13 +188,13 @@ public class ProjectView {
                     developers.add(developer);
                     project = new Project(projectId, projectName, projectVersion, developers);
                     projects.add(project);
-                    projectDAO.save(project);
-                    developerDAO.update(developer);
+                    javaIOProjectDAOImpl.save(project);
+                    javaIODeveloperDAOImpl.update(developer);
                     break;
                 } else {
                     Set<Developer> developers = new LinkedHashSet<>();
                     project = new Project(projectId, projectName, projectVersion, developers);
-                    projectDAO.save(project);
+                    javaIOProjectDAOImpl.save(project);
                     projects.add(project);
                     break;
                 }
@@ -223,7 +230,7 @@ public class ProjectView {
             do {
                 System.out.println("There is a list of developers: ");
 
-                developerDAO.showAllDevelopers();
+                javaIODeveloperDAOImpl.showAllDevelopers();
 
                 System.out.println();
                 System.out.println("Please, enter ID of developer you want to add: ");
@@ -268,7 +275,7 @@ public class ProjectView {
                 addDeveloper = br.readLine().trim();
                 if (addDeveloper.equals("no")) {
                     project = new Project(projectId, projectName, projectVersion, developers);
-                    projectDAO.update(project);
+                    javaIOProjectDAOImpl.update(project);
                     break;
                 }
             } while(true);

@@ -1,4 +1,4 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.model;
 
 import java.util.Set;
 
@@ -9,16 +9,16 @@ public class Project {
 
     Set<Developer> developers;
 
-    Project() {
+    public Project() {
     }
 
-    Project(Integer id, String projectName, String projectVersion) {
+    public Project(Integer id, String projectName, String projectVersion) {
         this.id = id;
         this.projectName = projectName;
         this.projectVersion = projectVersion;
     }
 
-    Project(Integer id, String projectName, String projectVersion, Set<Developer> developers) {
+    public Project(Integer id, String projectName, String projectVersion, Set<Developer> developers) {
         this.id = id;
         this.projectName = projectName;
         this.projectVersion = projectVersion;

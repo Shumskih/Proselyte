@@ -1,4 +1,4 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.model;
 
 import java.util.Set;
 
@@ -12,10 +12,10 @@ public class Developer {
     private Set<Skill> skills;
     private Set<Project> projects;
 
-    Developer() {
+    public Developer() {
     }
 
-    Developer(Integer id, String name, String surname, String specialization, Integer experience, Integer salary, Set<Skill> skills, Set<Project> projects ) {
+    public Developer(Integer id, String name, String surname, String specialization, Integer experience, Integer salary, Set<Skill> skills, Set<Project> projects ) {
         this.id = id;
         this.name = name;
         this.surname = surname;

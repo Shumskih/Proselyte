@@ -1,4 +1,4 @@
-package main.java.net.proselyte.Practice.javacorefinal;
+package main.java.net.proselyte.Practice.javacorefinal.model;
 
 import java.util.Set;
 
